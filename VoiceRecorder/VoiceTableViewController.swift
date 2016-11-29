@@ -24,6 +24,8 @@ class VoiceTableViewController: UIViewController, NSFetchedResultsControllerDele
     var selectedYear : Int?
     var taptoHidekeyBoard : UITapGestureRecognizer?
     
+    var searchArray : NSMutableArray!
+    
 
     var searchActive : Bool = false
 
@@ -54,11 +56,11 @@ class VoiceTableViewController: UIViewController, NSFetchedResultsControllerDele
 //        taptoHidekeyBoard = UITapGestureRecognizer.init(target: self, Selector("handleTap"))
         taptoHidekeyBoard = UITapGestureRecognizer(target: self, action: #selector(VoiceTableViewController.handleTap(_:)))
         taptoHidekeyBoard?.numberOfTapsRequired = 1
-        
-
+    
     }
     func handleTap(sender: UITapGestureRecognizer? = nil) {
         // handling code
+        searchBar.resignFirstResponder()
     }
     override func viewWillAppear(animated: Bool) {
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -219,6 +221,16 @@ class VoiceTableViewController: UIViewController, NSFetchedResultsControllerDele
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
+        if searchText.characters.count > 0 {
+            for i in voiceRecords {
+                
+//              let  Voice1 = voiceRecords[i] as Voice
+//                if Voice1.tr {
+//                    <#code#>
+//                }
+            }
+        }
+
 //        filtered = data.filter({ (text) -> Bool in
 //            let tmp: NSString = text
 //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
@@ -351,6 +363,7 @@ class VoiceTableViewController: UIViewController, NSFetchedResultsControllerDele
             do {
                 try fetchResultController.performFetch()
                 voiceRecords = fetchResultController.fetchedObjects as! [Voice]
+                searchArray = NSMutableArray.init(array: voiceRecords)
                 print("Retrived data from core data")
                 completionHandler(true)
             } catch {
@@ -604,7 +617,7 @@ extension VoiceTableViewController: JTAppleCalendarViewDataSource, JTAppleCalend
 // MARK : UITableViewDelegate
 extension VoiceTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return voiceRecords.count
+        return searchArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -612,9 +625,11 @@ extension VoiceTableViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! VoiceTableCellView
         
         // Configure the cell...
-        let voiceRecord = voiceRecords[indexPath.row]
+        let voiceRecord = searchArray.objectAtIndex(indexPath.row) as! Voice
         
-        cell.titleLabel.text = voiceRecord.title //voiceRecord.objectForKey("title") as? String
+//        let voiceRecord = voiceRecords[indexPath.row]
+        
+        cell.titleLabel.text = voiceRecord.transcript //voiceRecord.objectForKey("title") as? String
         let  minutes = voiceRecord.length.intValue / 60
         let  seconds = voiceRecord.length.intValue % 60
         cell.lengthLabel.text = String(format:"%02i:%02i", minutes, seconds)
@@ -658,7 +673,7 @@ extension VoiceTableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        self.performSegueWithIdentifier("showVoiceDetail", sender: nil)
+//        self.performSegueWithIdentifier("showVoiceDetail", sender: nil)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

@@ -194,7 +194,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = DUR5UW8C7A;
+						DevelopmentTeam = 5VY7X6W92A;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -473,16 +473,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DUR5UW8C7A;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 5VY7X6W92A;
 				INFOPLIST_FILE = VoiceRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = zelig.taprecord;
 				PRODUCT_NAME = VoiceRecorder;
-				PROVISIONING_PROFILE = "3875e988-6dc3-467f-9869-5f9ddc774026";
-				PROVISIONING_PROFILE_SPECIFIER = WildCard_Development_Yacir;
+				PROVISIONING_PROFILE = "0218ed96-82df-4669-9789-54d4d4bce6f6";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: *";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 2.3;
 			};
@@ -496,15 +496,15 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Sufyan Anees (B89RVC8L4R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = B89RVC8L4R;
+				DEVELOPMENT_TEAM = 5VY7X6W92A;
 				INFOPLIST_FILE = VoiceRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = zelig.taprecord;
 				PRODUCT_NAME = VoiceRecorder;
-				PROVISIONING_PROFILE = "b62ae556-de09-41f9-bd96-4411ceeed43f";
-				PROVISIONING_PROFILE_SPECIFIER = "AdhocPP Sufyanz";
+				PROVISIONING_PROFILE = "0218ed96-82df-4669-9789-54d4d4bce6f6";
+				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: *";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 2.3;
 			};
